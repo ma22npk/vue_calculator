@@ -1,22 +1,34 @@
 const store = new Vuex.Store({
-        state: {
-            // ボタンの文字を定義
-            numbers: [
-                ["7", "8", "9", "C"],
-                ["4", "5", "6", "+"],
-                ["1", "2", "3", "-"],
-                ["0", "="]
-            ],
-            // 計算結果を設定する変数を定義
-            display: "0"
+    state: {
+        numbers: [
+            ["7", "8", "9", "C"],
+            ["4", "5", "6", "+"],
+            ["1", "2", "3", "-"],
+            ["0", "="]
+        ],
+        display: "0"
+    },
+    mutations: {
+        addDisp(state, payload) {
+            // 表示されている値が0の場合、0は表示しないように制御
+            if (state.display === "0") {
+                state.display = payload
+                    // 表示されている値が0以外の場合は、クリックした値を後ろに結合
+            } else {
+                state.display += payload
+            }
         }
-    })
-    // mapstateを利用するために記述
+    }
+})
 const { mapState } = Vuex
-
 new Vue({
     store,
     el: "#app",
-    // mapStateから値を取得
-    computed: mapState(['numbers', 'display'])
+    computed: mapState(['numbers', 'display']),
+    methods: {
+        addDisp(number) {
+            // mutationの呼び出し
+            this.$store.commit('addDisp', number)
+        }
+    }
 })
