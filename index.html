@@ -26,14 +26,15 @@
             <h1>電卓</h1>
             <input type="text" :value="display" readonly>
             <!-- 各行のボタンを取得 -->
-            <div>
+            <div class="buttons" v-for="(row, index) in numbers">
                 <!-- 各行からそれぞれのボタンの値を取得 -->
-                <button v-for="" :id="">
+                <button v-for="(number, index2) in row" :id="['button'+ index + '-' + index2 ]">
               {{ number }}
             </button>
             </div>
         </div>
-
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <script src="https://unpkg.com/vuex@2.0.0"></script>
         <script src="js/script.js"></script>
     </body>
 
