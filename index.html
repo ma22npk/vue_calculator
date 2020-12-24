@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- 日本語サイトであることの宣言 -->
+<html lang="ja">
+
+<head>
+    <!-- 文字コードはutf-8を指定 -->
+    <meta charset="UTF-8">
+
+    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/ fb# prefix属性: http://ogp.me/ns/ prefix属性#">
+        <meta property="og:url" content=" ページの URL" />
+        <meta property="og:type" content=" ページの種類" />
+        <meta property="og:title" content=" ページの タイトル" />
+        <!-- ディスクリプションはサイトの説明文。 -->
+        <meta name="description" content="サイトの説明の文章">
+        <meta property="og:site_name" content="サイト名" />
+        <meta property="og:image" content=" サムネイル画像の URL" />
+        <!-- スマホやタブレットで表示をするビューポートの記述 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Style CSS -->
+        <link href="CSS/style.css" rel="stylesheet">
+        <title>サイトのタイトル</title>
+    </head>
+
+    <body>
+        <div id="app">
+            <h1>電卓</h1>
+            <input type="text" :value="display" readonly>
+            <!-- 各行のボタンを取得 -->
+            <div>
+                <!-- 各行からそれぞれのボタンの値を取得 -->
+                <button v-for="" :id="">
+              {{ number }}
+            </button>
+            </div>
+        </div>
+
+        <script src="js/script.js"></script>
+    </body>
+
+</html>
