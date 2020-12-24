@@ -10,6 +10,11 @@ const store = new Vuex.Store({
     },
     mutations: {
         addDisp(state, payload) {
+            // =がクリックされた際に計算を行う
+            if (payload === "=") {
+                state.display = eval(state.display)
+                return
+            }
             // 表示されている値が0の場合、0は表示しないように制御
             if (state.display === "0") {
                 state.display = payload
@@ -21,6 +26,7 @@ const store = new Vuex.Store({
     }
 })
 const { mapState } = Vuex
+
 new Vue({
     store,
     el: "#app",

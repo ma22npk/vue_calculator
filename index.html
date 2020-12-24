@@ -26,7 +26,6 @@
             <h1>電卓</h1>
             <input type="text" :value="display" readonly>
             <div class="buttons" v-for="(row, index) in numbers">
-                <!-- ボタンクリック時にaddDispを呼び出す -->
                 <button v-for="(number, index2) in row" :id="['button'+ index + '-' + index2 ]" @click="addDisp(number)">
               {{ number }}
           </button>
