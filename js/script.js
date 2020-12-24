@@ -6,21 +6,44 @@ const store = new Vuex.Store({
             ["1", "2", "3", "-"],
             ["0", "="]
         ],
-        display: "0"
+        display: "0",
+        // 一つ前の項の値を格納
+        previous: ""
     },
     mutations: {
         addDisp(state, payload) {
-            // =がクリックされた際に計算を行う
+            // 「＝」ボタンが押された場合、計算を実行
             if (payload === "=") {
                 state.display = eval(state.display)
-                return
-            }
-            // 表示されている値が0の場合、0は表示しないように制御
-            if (state.display === "0") {
-                state.display = payload
-                    // 表示されている値が0以外の場合は、クリックした値を後ろに結合
-            } else {
+                    //  「＋」、「ー」が押された場合の処理
+            } else if (payload === "+" || payload === "-") {
+                // 一つ前で「＋」、「ー」がクリックされた場合、何も処理しない
+                if (state.previous === "+" || state.previous === "-") {
+                    return;
+                }
+                state.previous = payload
                 state.display += payload
+                    // クリア処理
+            } else if (payload === "C") {
+                state.display = "0";
+                state.previous = ""
+                    // 押されたボタンが数字ボタンの場合
+            } else {
+                // 初期状態や「C」がクリックされた時の処理、既存の表示をクリックした値に置き換える
+                if (state.previous === "") {
+                    state.display = payload
+                    state.previous = payload
+                        // 一つ前の項が0の場合何も処理しない
+                } else if (state.previous === "0") {
+                    return
+                } else {
+                    // 一つ前に押されたボタンが「＋」もしくは「ー」の場合、previous変数を初期化する。
+                    if (state.previous === "+" || state.previous === "-") {
+                        state.previous = ""
+                    }
+                    state.display += payload
+                    state.previous += payload
+                }
             }
         }
     }
@@ -30,10 +53,9 @@ const { mapState } = Vuex
 new Vue({
     store,
     el: "#app",
-    computed: mapState(['numbers', 'display']),
+    computed: mapState(['numbers', 'display', 'previous']),
     methods: {
         addDisp(number) {
-            // mutationの呼び出し
             this.$store.commit('addDisp', number)
         }
     }

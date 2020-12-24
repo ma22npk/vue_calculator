@@ -22,13 +22,15 @@
     </head>
 
     <body>
-        <div id="app">
-            <h1>電卓</h1>
-            <input type="text" :value="display" readonly>
-            <div class="buttons" v-for="(row, index) in numbers">
-                <button v-for="(number, index2) in row" :id="['button'+ index + '-' + index2 ]" @click="addDisp(number)">
-              {{ number }}
-          </button>
+        <div class="wrapper">
+            <div id="app">
+                <h1>Vue電卓</h1>
+                <input type="text" :value="display" readonly>
+                <div class="buttons" v-for="(row, index) in numbers">
+                    <button v-for="(number, index2) in row" :id="['button'+ index + '-' + index2 ]" @click="addDisp(number)">
+                {{ number }}
+            </button>
+                </div>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>

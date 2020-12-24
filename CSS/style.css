@@ -1,10 +1,20 @@
+* {
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 28px;
+}
+
 button {
-    width: 70px;
+    width: 72px;
     height: 50px;
+    background-color: black;
+    color: aqua;
 }
 
 #button3-0 {
-    width: 210px;
+    width: 216px;
+    background-color: black;
+    color: aqua;
 }
 
 #app {
@@ -12,11 +22,18 @@ button {
 }
 
 input {
-    font-size: 15px;
+    background-color: black;
+    color: aqua;
+    background-color: black;
+    font-size: 24px;
     border-width: 1px;
     border-color: black;
     border-style: solid;
     width: 280px;
     height: 50px;
     padding-left: 5px;
+}
+
+h1 {
+    text-align: center;
 }
